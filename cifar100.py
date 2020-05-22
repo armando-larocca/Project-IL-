@@ -12,6 +12,7 @@ import pickle
 import PIL.Image as Image
 from torchvision.transforms import ToTensor, ToPILImage
 import pylab
+from utils import download_and_extract_archive
 
 
 
