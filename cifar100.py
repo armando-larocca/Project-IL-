@@ -118,13 +118,18 @@ class Cifar100(VisionDataset):
          images_subset = images_subset+splitted_class_subset
        return images_subset
   
+    
     def __incremental_train_indexes__(self,proportion):
       class_subset = []
       n = 0
       for j in range(0,10):
+        temp = []
         for k in range(n,n+10):  
-          class_subset[j].extend(self.__get_class_images__(k))
+          var = self.__get_class_images__(k)
+          var = var[0:int(proportion*len(self.__get_class_images__(k)))]
+          temp.extend(var)
         n=n+10
+        class_subset.append(temp)
       return class_subset
 
 
@@ -133,7 +138,11 @@ class Cifar100(VisionDataset):
       class_subset = []
       n = 0
       for j in range(0,10):
+        temp = []
         for k in range(n,n+10):  
-          class_subset[j].extend(self.__get_class_images__(k))
+          var = self.__get_class_images__(k)
+          var = var[int(proportion*len(self.__get_class_images__(k))) : len(self.__get_class_images__(k))]
+          temp.extend(var)
         n=n+10
-      return class_subset  
+        class_subset.append(temp)
+      return class_subset 
