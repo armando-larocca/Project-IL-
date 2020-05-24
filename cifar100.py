@@ -127,7 +127,7 @@ class Cifar100(VisionDataset):
         for k in range(n,n+10):  
           var = self.__get_class_images__(k)
           var = var[0:int(proportion*len(self.__get_class_images__(k)))]
-          temp.extend(var)
+          temp + var
         n=n+10
         class_subset.append(temp)
       return class_subset
@@ -142,7 +142,7 @@ class Cifar100(VisionDataset):
         for k in range(n,n+10):  
           var = self.__get_class_images__(k)
           var = var[int(proportion*len(self.__get_class_images__(k))) : len(self.__get_class_images__(k))]
-          temp.extend(var)
+          temp + var
         n=n+10
         class_subset.append(temp)
       return class_subset 
