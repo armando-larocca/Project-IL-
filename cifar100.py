@@ -84,7 +84,7 @@ class Cifar100(VisionDataset):
             if self.transform is not None:
               image = self.transform(image)
 
-            return image, label
+            return index,image, label
 
     def __len__(self):
         
