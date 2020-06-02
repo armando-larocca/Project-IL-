@@ -149,15 +149,14 @@ class Cifar100(VisionDataset):
 
 
 
-    def _shuffle_(self):
-        vettore = []
-        for x in range(0,99):
-            vettore.append(x)
-           
-        random.shuffle(vettore)
+    def _shuffle_(self,vettore):
+        indice_vec = []
 
         for x in range(0,len(vettore)):
             indice = self.__get_class_images__(x)
+            indice_vec.append(indice)
+        
+        for dim in range(0,len(indice_vec)):
+            for y in indice_vec[dim]: 
+                self.targets[y] = vettore[dim]
 
-            for y in indice: 
-                self.targets[y] = vettore[x]
