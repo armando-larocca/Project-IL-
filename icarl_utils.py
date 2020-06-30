@@ -50,17 +50,20 @@ def class_images(Subset, label):
 
 
 
-def show_images(images):
-    N = images.shape[0]
-    fig = plt.figure(figsize=(1, N))
-    gs = gridspec.GridSpec(1, N)
-    gs.update(wspace=0.05, hspace=0.05)
-    for i, img in enumerate(images):
-        img = np.transpose(img, (1,2,0))
-        ax = plt.subplot(gs[i])
-        plt.axis('off')
-        ax.set_xticklabels([])
-        ax.set_yticklabels([])
-        ax.set_aspect('equal')
-        plt.imshow(img)
-    plt.show()
+def softmax_with_T(y, labels):
+    T=2
+    p = F.log_softmax(y/T, dim=1)
+    lab = F.softmax(labels/T, dim=1)
+
+    p = p.cpu()
+    lab = lab.cpu()
+    p = p.detach().numpy()
+    lab = lab.detach().numpy()
+
+    somma = 0
+    for l in range(0,len(labels)):
+      product= np.inner(lab[l], p[l])
+      somma = somma + product
+
+    loss = -(somma/len(labels))
+    return loss
