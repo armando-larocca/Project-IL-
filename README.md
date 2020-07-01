@@ -8,3 +8,5 @@ The loss with temperature is implemented in icarl_utils.py with some other utili
 Classifier.ipynb is a modified version of Icarl in which are added some methods that allows to use different classifiers. 
 
 In ETE.ipynb there is the implentation of the End-to-end approach. 
+
+The file NDBC.ipynb is about the new implementation related to the updating of NMC.
