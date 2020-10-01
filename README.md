@@ -10,3 +10,5 @@ Classifier.ipynb is a modified version of Icarl in which are added some methods 
 In ETE.ipynb there is the implentation of the End-to-end approach. 
 
 The file NDBC.ipynb is about the new implementation related to the updating of NMC.
+
+More details are provided in report-il.pdf
